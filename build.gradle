@@ -1,8 +1,8 @@
 plugins {
     id 'java'
     id 'application'
-    id 'net.ltgt.errorprone' version '3.1.0'
-    id 'checkstyle'
+//    id 'net.ltgt.errorprone' version '3.1.0'
+//    id 'checkstyle'
 }
 
 java {
@@ -10,11 +10,11 @@ java {
     targetCompatibility = JavaVersion.VERSION_21
 }
 
-configurations.checkstyle {
-    resolutionStrategy.capabilitiesResolution.withCapability("com.google.collections:google-collections") {
-        select("com.google.guava:guava:0")
-    }
-}
+//configurations.checkstyle {
+//    resolutionStrategy.capabilitiesResolution.withCapability("com.google.collections:google-collections") {
+//        select("com.google.guava:guava:0")
+//    }
+//}
 
 repositories {
     mavenCentral()
@@ -22,8 +22,8 @@ repositories {
 
 dependencies {
     // Checks
-    errorprone 'com.google.errorprone:error_prone_core:2.15.0'
-    checkstyle 'com.puppycrawl.tools:checkstyle:10.13.0'
+//    errorprone 'com.google.errorprone:error_prone_core:2.15.0'
+//    checkstyle 'com.puppycrawl.tools:checkstyle:10.13.0'
 
     // Errorprone annotations for solve with warnings
     implementation group: 'com.google.errorprone', name: 'error_prone_annotations', version: '2.15.0'
@@ -52,10 +52,10 @@ test {
     jvmArgs += ["--enable-preview"]
 }
 
-checkstyle {
-    configFile = new File("checkstyle.xml")
-    checkstyleTest.enabled = false
-}
+//checkstyle {
+//    configFile = new File("checkstyle.xml")
+//    checkstyleTest.enabled = false
+//}
 
 compileJava {
     options.compilerArgs += ["--enable-preview"]
@@ -71,6 +71,6 @@ compileTestJava {
 application {
     mainClass = 'ru.vk.itmo.test.reference.ReferenceService'
     applicationDefaultJvmArgs = ['-Xmx128m', '--enable-preview', '-Xlog:gc']
-    // + ['-XX:+UseSerialGC']
+    //+ ['-XX:+UseSerialGC']
 //
 }

@@ -82,6 +82,10 @@ public class ReferenceServer extends HttpServer {
         if (!(sessionI instanceof ReferenceHttpSession session)) {
             throw new IllegalArgumentException("this method support only ReferenceHttpSession");
         }
+        if ("/v0/count".equals(request.getPath())) {
+            session.stream2(10000000);
+            return;
+        }
 //        if (config.selfPort() == 8100) {
 //            return;
 //        }
